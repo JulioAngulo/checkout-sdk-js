@@ -19,7 +19,7 @@ export enum Mode {
     Incomplete,
 }
 
-export function getCustomerInitilaizeOptions(mode: Mode = Mode.Full): CustomerInitializeOptions {
+export function getCustomerInitializeOptions(mode: Mode = Mode.Full): CustomerInitializeOptions {
     const methodId = { methodId: 'googlepay' };
     const undefinedMethodId = { methodId: undefined };
     const container = { container: 'googlePayCheckoutButton' };

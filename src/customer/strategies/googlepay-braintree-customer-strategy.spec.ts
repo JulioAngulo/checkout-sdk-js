@@ -15,7 +15,7 @@ import { RemoteCheckoutActionCreator, RemoteCheckoutRequestSender } from '../../
 import { getCustomerState } from '../customers.mock';
 
 import { GooglePayBraintreeCustomerStrategy } from '.';
-import { getCustomerInitilaizeOptions, getPaymentMethod, Mode } from './googlepay-braintree-customer-mock';
+import { getCustomerInitializeOptions, getPaymentMethod, Mode } from './googlepay-braintree-customer-mock';
 
 describe('GooglePayBraintreeCustomerStrategy', () => {
     let container: HTMLDivElement;
@@ -98,7 +98,7 @@ describe('GooglePayBraintreeCustomerStrategy', () => {
         describe('Payment method exist', () => {
 
             it('adds the event listener to the wallet button', async () => {
-                customerInitializeOptions = getCustomerInitilaizeOptions();
+                customerInitializeOptions = getCustomerInitializeOptions();
 
                 await strategy.initialize(customerInitializeOptions);
 
@@ -106,7 +106,7 @@ describe('GooglePayBraintreeCustomerStrategy', () => {
             });
 
             it('Validates if strategy is been initialized', async () => {
-                customerInitializeOptions = getCustomerInitilaizeOptions();
+                customerInitializeOptions = getCustomerInitializeOptions();
 
                 await strategy.initialize(customerInitializeOptions);
 
@@ -120,7 +120,7 @@ describe('GooglePayBraintreeCustomerStrategy', () => {
             });
 
             it('fails to initialize the strategy if no GooglePayBraintreeCustomerInitializeOptions is provided ', async () => {
-                customerInitializeOptions = getCustomerInitilaizeOptions(Mode.Incomplete);
+                customerInitializeOptions = getCustomerInitializeOptions(Mode.Incomplete);
 
                 try {
                     await strategy.initialize(customerInitializeOptions);
@@ -130,7 +130,7 @@ describe('GooglePayBraintreeCustomerStrategy', () => {
             });
 
             it('fails to initialize the strategy if no methodid is supplied', async () => {
-                customerInitializeOptions = getCustomerInitilaizeOptions(Mode.UndefinedMethodId);
+                customerInitializeOptions = getCustomerInitializeOptions(Mode.UndefinedMethodId);
 
                 try {
                     await strategy.initialize(customerInitializeOptions);
@@ -140,7 +140,7 @@ describe('GooglePayBraintreeCustomerStrategy', () => {
             });
 
             it('fails to initialize the strategy if no valid container id is supplied', async () => {
-                customerInitializeOptions = getCustomerInitilaizeOptions(Mode.InvalidContainer);
+                customerInitializeOptions = getCustomerInitializeOptions(Mode.InvalidContainer);
 
                 try {
                     await strategy.initialize(customerInitializeOptions);
@@ -155,7 +155,7 @@ describe('GooglePayBraintreeCustomerStrategy', () => {
         let customerInitializeOptions: CustomerInitializeOptions;
 
         beforeEach(() => {
-            customerInitializeOptions = getCustomerInitilaizeOptions();
+            customerInitializeOptions = getCustomerInitializeOptions();
         });
 
         it('succesfully deinitializes the strategy', async () => {
@@ -196,7 +196,7 @@ describe('GooglePayBraintreeCustomerStrategy', () => {
     describe('#signIn()', () => {
 
         it('throws error if trying to sign in programmatically', async () => {
-            customerInitializeOptions = getCustomerInitilaizeOptions();
+            customerInitializeOptions = getCustomerInitializeOptions();
 
             await strategy.initialize(customerInitializeOptions);
 
@@ -206,7 +206,7 @@ describe('GooglePayBraintreeCustomerStrategy', () => {
 
     describe('#signOut()', () => {
         beforeEach(async () => {
-            customerInitializeOptions = getCustomerInitilaizeOptions();
+            customerInitializeOptions = getCustomerInitializeOptions();
 
             await strategy.initialize(customerInitializeOptions);
         });
